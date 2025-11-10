@@ -504,11 +504,20 @@ print("My Name is %s and My Age is %d and My Rank is %f" % (name, age, rank))
 #%s => String  نص
 #%d => Integer  عدد صحيح
 #%f => Float   عدد عشري
-
+namee = "Najat"
+agee = 38
+ranke = 10 
+print("My Name is {} ".format("Najat")) # My Name is Najat
+print("My Name is {} ".format(namee)) # My Name is Najat
+print("My Name is {} and My Age is {} ".format(namee, agee)) # My Name is Najat and My Age is 38
+print("My Name is {:s}  Age is {:d} & Rank is {:f} ".format(namee, agee, ranke)) # My Name is Najat  Age is 38 & Rank is 10.000000
+#----------------------
+#
 ne = "Najat"
 ln = "pthon" 
 yn = 3
 print("My Name is %s Iam %s Developer With %d Vears Exp" % (ne, ln, yn))# My Name is Najat Iam pthon Developer With 3 Vears Exp
+print("My Name is {} Iam {} Developer With {:d} Vears Exp" .format (ne, ln, yn))# My Name is Najat Iam pthon Developer With 3 Vears Exp
 
 # control Floating Point Number تنسيق الأعداد العشرية
 myNumber = 10
@@ -516,9 +525,46 @@ print("My Number is %f" % myNumber)          # My Number is 10.000000
 print("My Number is %f" % myNumber)        # My Number is 10.000000
 print("My Number is %.2f" % myNumber)       # My Number is 10.00
 
+print("My Number is {:d}" .format (myNumber))   #   My Number is 10
+print("My Number is {:f}" .format (myNumber))  #    My Number is 10.000000
+print("My Number is {:.2f}" .format (myNumber))  #   My Number is 10.00 
 # truncate String تنسيق النصوص
 mylongString = "Hello people of Elzero Web School I Love Y" 
 print("Message: %s" % mylongString)  # Message: Hello people of Elzero Web School I Love Y
 print("Message: %.5s" % mylongString)  # Message: Hello
+print("Message: {}".format (mylongString))  # Message: Hello
+print("Message: {:.13s}".format (mylongString))  # Message: Hello people
 #-----------------------------------------
-#
+# format Money تنسيق النقود
+myMoney = 500162350198
+print("My Money is: {:d}".format (myMoney))  # My Money is: 500162350198
+print("My Money is: {:_d}".format (myMoney))  # My Money    is: 500_162_350_198
+print("My Money is: {:,d}".format (myMoney))  # My Money is: 500,162,350,198
+#print("My Money is: {:&d}".format (myMoney))  # غلط لأن & مش رمز تنسيق صحيح        
+#-------------
+#rearrange ilems ترتيب العناصر  
+a, b, c = "One", "Two", "Three"
+print("Hello {} {} {}".format(a, b, c))          # Hello One Two Three
+print("Hello {2} {1} {0}".format(a, b, c))      # Hello Three Two One
+print("Hello {1} {2} {0}".format(a, b, c))     # Hello Two Three One    
+print("Hello {0} {0} {0}".format(a, b, c))    # Hello One One One
+
+x, y, z = 10, 20, 30
+print("Hello {} {} {}".format(x, y, z))          # Hello 10 20 30
+print("Hello {2} {1} {0}".format(x, y, z))      # Hello 30 20 10
+print("Hello {1:f} {2:f} {0:f}".format(x, y, z))    # Hello 20.000000 30.000000 10.000000
+print("Hello {1:.2f} {2:.4f} {0:.5f}".format(x, y, z)) # Hello 20.00 30.0000 10.00000
+print("Hello {0} {0} {0}".format(x, y, z))   # Hello 10 10 10
+
+#-----------------------------------------  
+#format in version 3.6+ تنسيق النصوص في بايثون 3.6+
+myName = "Najat"
+myAge = 38
+print(f"My Name is : {myName} and My Age is : {myAge}")  # My Name is Najat and My Age is 38
+print(f"My Name is : {myName} and My Age is : {myAge}")  # My Name is NAJAT and My Age is 40
+#------------------------------------------------------
+#https://pyformat.info/  موقع لتنسيق النصوص في بايثون   
+#https://realpython.com/python-f-strings/  شرح تنسيق النصوص في بايثون
+#https://www.programiz.com/python-programming/methods/string  شرح دوال النصوص في بايثون
+#https://docs.python.org/3/library/stdtypes.html#string-methods  التوثيق الرسمي لدوال النصوص في بايثون
+#-----------------------------------------
