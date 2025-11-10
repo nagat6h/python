@@ -310,12 +310,215 @@ print(len(n.strip()))
 print(len(n.rstrip()))
 print(len(n.lstrip()))
 
+#-----------------------------------------------
 n = "###I Love Python####"
-print(n.strip())#تزيل المسافات  فقط بشكل افتراضي، وليس الرموز الأخرى
-print(n.rstrip("#"))#     # تزيل # من اليمين فقط
-print(n.lstrip("#")) # تزيل # من اليسار فقط
- 
-n = "#@&@#@#I Love Python#&#&#"  # اذا عندي اكثر من علامة 
-print(n.strip("#@&"))
-print(n.rstrip("#@&"))
-print(n.lstrip("#@&"))
+print(n.strip())        # لا تزيل # لأنها تزيل المسافات فقط افتراضياً
+print(n.rstrip("#"))    # "###I Love Python"   (تزيل # من اليمين فقط)
+print(n.lstrip("#"))    # "I Love Python####"  (تزيل # من اليسار فقط)
+
+
+n = "#@&@#@#I Love Python#&#&#"
+print(n.strip("#@&"))   # "I Love Python"   (تزيل أي من الرموز # @ & من الجهتين)
+print(n.rstrip("#@&"))  # " #@&@#@#I Love Python"  (من اليمين فقط)
+print(n.lstrip("#@&"))  # "I Love Python#&#&#"     (من اليسار فقط)
+#-----------------------------------------------
+# title() ← تجعل أول حرف من كل كلمة كبير (Capital)
+b = "I love 2b Graphics and 3g Techlogy and Python"
+print(b.title())  # "I Love 2B Graphics And 3G Techlogy And Python"
+
+# capitalize() ← تجعل أول حرف فقط من السطر كبير والباقي صغير
+b = "I love 2b Graphics and 3g Techlogy and Python"
+print(b.capitalize())  # "I love 2b graphics and 3g techlogy and python"
+
+#-----------------------------------------------
+# zfill() ← تضيف أصفار في اليسار حتى يصل الطول للقيمة المطلوبة
+c, b, e, f = "1", "11", "111", "1111"
+print(c)          # 1
+print(b)          # 11
+print(e)          # 111
+print(f)          # 1111
+print(c.zfill(4)) # 0001
+print(b.zfill(4)) # 0011
+print(e.zfill(4)) # 0111
+print(f.zfill(4)) # 1111  (لا يضيف شيء لأنها بالفعل 4 خانات)
+#-----------------------------------------------
+# upper() ← يحول النص إلى حروف كبيرة
+g = "najat"
+print(g.upper())   # "NAJAT"
+
+# lower() ← يحول النص إلى حروف صغيرة
+h = "NAJAT"
+print(h.lower())   # "najat"
+#-----------------------------------------------
+# دوال السلاسل النصية (الجزء الثاني)
+# split() و rsplit()
+
+a = "I Love python and PHP and MysQl"
+print(a.split())   # ['I', 'Love', 'python', 'and', 'PHP', 'and', 'MysQl']
+# (يفصل بالكلمات عند كل مسافة)
+
+b = "I-Love-python-and-PHP-and-MysQl"
+print(b.split("-"))  # ['I', 'Love', 'python', 'and', 'PHP', 'and', 'MysQl']
+# (يفصل عند علامة - )
+
+c = "I-Love-python-and-PHP-and-MysQl"
+print(c.split("-", 3))  # ['I', 'Love', 'python', 'and-PHP-and-MysQl']
+# (يفصل 3 مرات فقط من اليسار)
+
+d = "I-Love-python-and-PHP-and-MysQl"
+print(d.rsplit("-", 3)) # ['I-Love-python-and', 'PHP', 'and', 'MysQl']
+# (يفصل 3 مرات فقط ولكن من اليمين)
+#----------------------------------------------
+# center(width, fillchar) ← يضع النص في المنتصف ويضيف رموز أو مسافات حوله
+e = "Najat"
+print(e.center(9))        # "  Najat  "   (بمسافات)
+print(e.center(9, "#"))   # "##Najat##"   (بـ #)
+print(e.center(15, "@"))  # "@@@@@Najat@@@@@"  (بـ @)
+#-----------------------------------------------
+# count() ← تعدد كم مرة تكرر النص المطلوب
+f = "I Love python and PHP Because PHP is Easy"
+print(f.count("PHP"))          # 2 (تكررت مرتين)
+print(f.count("PHP", 0, 25))   # 1 (من البداية إلى الفهرس 25 فقط)
+print(f.count("PHP", 0, 33))   # 2 (تكررت مرتين حتى الفهرس 33)
+
+#-----------------------------------------------
+# swapcase() ← يقلب حالة الحروف (الكبير يصير صغير والعكس)
+g = "i love python"
+h = "I LOVE PYTHON"
+print(g.swapcase())  # I LOVE PYTHON
+print(h.swapcase())  # i love python
+
+#-----------------------------------
+# startswith() ← يتحقق هل النص يبدأ بقيمة معينة
+# الفهرس → 0 1 2 3 4 5 6 7 8 9 10 11 12 
+# I   L o v e   p y t h  o  n  → الأحرف 
+i = "I Love python"
+print(i.startswith("I"))         # True  (يبدأ بـ I)
+print(i.startswith("h"))         # False (لا يبدأ بـ h)
+print(i.startswith("p", 7, 12))  # True  (من الفهرس 7 إلى 12 يبدأ بـ p)
+print(i.startswith("n", 12))     # True (لأن النص ابتداءً من الفهرس 12 يبدأ بـ "n".)
+#-----------------------------------------------
+# endswith() ← يتحقق هل النص ينتهي بقيمة معينة
+j = "I Love python"
+print(j.endswith("n"))         # True  (ينتهي بـ n)
+print(j.endswith("S"))         # False (لا ينتهي بـ S)
+print(j.endswith("e", 2, 6))   # True  (من الفهرس 2 إلى 6 ينتهي بـ e)
+print(j.endswith("I", 0))      # False (لا ينتهي بـ I من البداية)
+#------------------------
+#index( sudstring , start , end) 
+u = "I Love python" 
+print(u.index("p"))          # تطبع 7 => مكان 'p' في النص
+print(u.index("p", 0, 10))   # تطبع 7 => البحث فقط بين المواقع 0 و 10
+# print(u.index("p", 0, 5))  # لو شغلتها => Error لأن 'p' مش موجودة في هذا النطاق
+
+#find( sudstring , start , end)  
+o = "I Love python"
+print(o.find("p"))        # 7 => مكان 'p'
+print(o.find("p", 0, 10)) # 7 => نفس النتيجة
+print(o.find("p", 0, 5))  # -1 => 'p' مش موجودة في هذا النطاق
+# ملاحظة: الفرق بين index و find:
+# index() يعطي Error لو النص مش موجود
+# find() يعطي -1 لو النص مش موجود
+
+q = "Najat"
+print(q.rjust(10))      # "     Najat"  => 5 فراغات على اليسار
+print(q.rjust(10, "#")) # "#####Najat"  => 5 رموز # على اليسار
+
+# ljust() => النص على اليسار، الفراغات أو الرموز على اليمين
+w = "Najat"
+print(w.ljust(10))      # "Najat     "  => يضيف 5 فراغات على اليمين لتصبح الطول 10
+print(w.ljust(10, "#")) # "Najat#####"  => يضيف 5 رموز # على اليمين
+
+# splitlines() => يقسم النص إلى قائمة حسب السطور
+qw = """First line
+second Line
+Third Line"""
+print(qw.splitlines())  # ['First line', 'second Line', 'Third Line']  => يقسم عند كل سطر جديد
+qe = "First line\nsecond Line\nThird Line"
+print(qe.splitlines())  # نفس النتيجة لأن \n يعني سطر جديد
+
+
+
+# expandtabs() => يستبدل التاب (\t) بعدد معين من الفراغات
+qr = "Hello\tWorld\tI\tLove\tPythen"
+print(qr.expandtabs(2)) # كل \t تصبح فراغين فقط
+
+# istitle() => يتحقق إذا كانت كل كلمة تبدأ بحرف كبير وباقي الحروف صغيرة
+one = "I Love Python And 3G"
+two = "I Love python And 3g"
+print(one.istitle()) # True  => لأن كل كلمة تبدأ بحرف كبير
+print(two.istitle()) # False => لأن كلمة "python" تبدأ بحرف صغير
+
+# isspace() => يتحقق إذا كان النص يحتوي فقط على فراغات
+three = " "
+four = ""
+print(three.isspace()) # True  => لأنه يحتوي فقط على فراغ
+print(four.isspace())# False => لأنه فارغ (لا يحتوي على شيء)
+
+# islower() => يتحقق إذا كانت كل الحروف صغيرة
+five = "i love python"
+six = "I Love Python"
+print(five.islower())
+print(six.islower())
+
+# isidentifier() => يتحقق إذا كانت الكلمة صالحة لتكون اسم متغير في بايثون
+seven = "najat_hes"
+eight = "NajatHes100"
+nint = "Najat--Hes100"
+print(seven.isidentifier())
+print(eight.isidentifier())
+print(nint.isidentifier())
+
+# isalnum() => يتحقق إذا كانت كل الحروف أرقام أو حروف فقط (بدون رموز)
+qt = "AaaaaBbbbb"
+qy = "AaaaaBbbbb1111"
+print(qt.isalnum()) # True  => فقط حروف
+print(qy.isalnum()) # True  => حروف وأرقام فقط (مسموح)
+# # isalnum() => يتحقق إذا كانت كل الحروف أرقام أو حروف فقط (بدون رموز)
+#--------------------------
+#replace( old Value, New Value,  count) => يستبدل نص معين بنص آخر
+qu = "Hello One Two Three One Four One"
+print(qu.replace("One", "1"))          # Hello 1 Two Three 1 Four 1
+print(qu.replace("One", "1", 1))       # Hello 1 Two Three One Four One
+print(qu.replace("One", "1", 2))       # Hello 1 Two Three 1 Four One
+
+#join(iterable) => يدمج عناصر قائمة أو tuple أو أي iterable إلى نص واحد
+myList = ["Najat", "Hussain", "Idris"]
+print("-".join(myList))   # Najat-Hussain-Idris
+print(" ".join(myList))   # Najat Hussain Idris
+print(", ".join(myList))    # Najat, Hussain, Idris
+print(type(", ".join(myList)))  # <class 'str'>  => النتيجة نص
+#-----------------------------------------
+##---------تنسيق السلاسل (Strings Formatting) --------
+name = "Najat"
+age = 38
+rank = 10 
+
+print("My Name is " + name )
+#print("My Name is " + name + " and My Age is " + (age) ) # Error  => لا يمكن دمج نص مع رقم مباشرة
+print("My Name is %s" % name)  # My Name Is Najat
+print("My Name is %s" % "Najat")  # My Name Is Najat
+print("My Name is %s and My Age is %d" % (name, age))  # My Name is Najat and My Age is 38
+print("My Name is %s and My Age is %d and My Rank is %f" % (name, age, rank))
+
+#%s => String  نص
+#%d => Integer  عدد صحيح
+#%f => Float   عدد عشري
+
+ne = "Najat"
+ln = "pthon" 
+yn = 3
+print("My Name is %s Iam %s Developer With %d Vears Exp" % (ne, ln, yn))# My Name is Najat Iam pthon Developer With 3 Vears Exp
+
+# control Floating Point Number تنسيق الأعداد العشرية
+myNumber = 10
+print("My Number is %f" % myNumber)          # My Number is 10.000000
+print("My Number is %f" % myNumber)        # My Number is 10.000000
+print("My Number is %.2f" % myNumber)       # My Number is 10.00
+
+# truncate String تنسيق النصوص
+mylongString = "Hello people of Elzero Web School I Love Y" 
+print("Message: %s" % mylongString)  # Message: Hello people of Elzero Web School I Love Y
+print("Message: %.5s" % mylongString)  # Message: Hello
+#-----------------------------------------
+#
